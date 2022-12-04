@@ -10,4 +10,6 @@ public interface BranchService {
 
 	List<Branch> getListOfBranch();
 
+	boolean editBranch(Branch branch);
+
 }

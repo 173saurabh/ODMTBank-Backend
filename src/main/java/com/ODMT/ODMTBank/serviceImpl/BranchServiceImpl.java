@@ -32,4 +32,18 @@ public class BranchServiceImpl implements BranchService
 		return branchDao.findAll();
 	}
 
+	@Override
+	public boolean editBranch(Branch branch) {
+		
+		//If ifsc code is changed branch will not be edited.
+		Branch databaseBranch = branchDao.findById(branch.getBranchId()).orElse(null);
+		if(!databaseBranch.getIfsc().equals(branch.getIfsc()))
+			return false;
+		
+		Branch updateBranch = branchDao.save(branch);
+		if(CommonUtil.isNull(updateBranch))
+			return false;
+		return true;
+	}
+
 }
