@@ -1,5 +1,7 @@
 package com.ODMT.ODMTBank.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,4 +46,24 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return true;
 	}
 
+	@Override
+	public boolean removeBranchManager(Long branchId) {
+		
+		Employee emp = employeeDao.findByEmployeeTypeAndActiveAndBranchBranchId("manager", true, branchId);
+		if(CommonUtil.isNull(emp))
+			return false;
+		
+		emp.setActive(false);
+		emp = employeeDao.save(emp);
+		
+		if(emp.getActive()==false)
+			return true;
+		return false;
+	}
+
+	@Override
+	public List<Employee> listOfEmployeesOfABranch(Long branchId) {
+		List<Employee> employees = employeeDao.findByBranchBranchId(branchId);
+		return employees;
+	}
 }
