@@ -35,6 +35,9 @@ public class Employee {
 	@Column(name = "employee_type" , nullable = false)
 	private String employeeType;
 	
+	@Column(name = "active" , nullable = false)
+	private Boolean active;
+	
 	@ManyToOne
 	@JoinColumn(name = "branch_id", referencedColumnName = "branch_id", nullable = true)
 	private Branch branch;
