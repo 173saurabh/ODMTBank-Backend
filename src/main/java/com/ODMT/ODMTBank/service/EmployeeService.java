@@ -12,4 +12,6 @@ public interface EmployeeService {
 
 	List<Employee> listOfEmployeesOfABranch(Long branchId);
 
+	List<Employee> listOfCurrentEmployeesOfABranch(Long branchId);
+
 }
