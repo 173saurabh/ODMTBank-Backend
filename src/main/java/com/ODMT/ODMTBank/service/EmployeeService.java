@@ -14,4 +14,6 @@ public interface EmployeeService {
 
 	List<Employee> listOfCurrentEmployeesOfABranch(Long branchId);
 
+	boolean resetEmployeePassword(Long empId, String password);
+
 }

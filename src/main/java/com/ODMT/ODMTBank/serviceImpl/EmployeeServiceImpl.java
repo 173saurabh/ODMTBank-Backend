@@ -72,4 +72,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		List<Employee> employees = employeeDao.findByBranchBranchIdAndActive(branchId,true);
 		return employees;
 	}
+
+	@Override
+	public boolean resetEmployeePassword(Long empId, String password) {
+		
+		return false;
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,16 @@ public class EmployeeController
 		if(flag)
 			return new ResponseEntity<>("Manager created",HttpStatus.CREATED);
 		return new ResponseEntity<>("Failed to add manager",HttpStatus.NOT_FOUND);
+	}
+	
+	// Incomplete
+	@PutMapping(value = "/reset-employee-password")
+	public ResponseEntity<String> resetEmployeePassword(@RequestParam Long empId,@RequestParam String password)
+	{
+		boolean flag = employeeService.resetEmployeePassword(empId,password);
+		if(flag)
+			return new ResponseEntity<>("Password reset successful",HttpStatus.ACCEPTED);
+		return new ResponseEntity<>("Password reset failed",HttpStatus.NOT_ACCEPTABLE);
 	}
 	
 	@GetMapping(value = "/list-of-employees-of-a-branch")
