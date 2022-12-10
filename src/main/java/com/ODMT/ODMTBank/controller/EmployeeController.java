@@ -42,6 +42,13 @@ public class EmployeeController
 		return new ResponseEntity<>(employees,HttpStatus.FOUND);
 	}
 	
+	@GetMapping(value = "/list-of-current-employees-of-a-branch")
+	public ResponseEntity<List<Employee>> listOfCurrentEmployeesOfABranch(@RequestParam Long branchId)
+	{
+		List<Employee> employees = employeeService.listOfCurrentEmployeesOfABranch(branchId);
+		return new ResponseEntity<>(employees,HttpStatus.FOUND);
+	}
+	
 	@DeleteMapping(value = "/remove-branch-manager")
 	public ResponseEntity<String> removeBranchManager(@RequestParam Long branchId)
 	{

@@ -66,4 +66,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		List<Employee> employees = employeeDao.findByBranchBranchId(branchId);
 		return employees;
 	}
+
+	@Override
+	public List<Employee> listOfCurrentEmployeesOfABranch(Long branchId) {
+		List<Employee> employees = employeeDao.findByBranchBranchIdAndActive(branchId,true);
+		return employees;
+	}
 }

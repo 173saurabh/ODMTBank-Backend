@@ -13,4 +13,6 @@ public interface EmployeeDao extends JpaRepository<Employee, Long>
 
 	List<Employee> findByBranchBranchId(Long branchId);
 
+	List<Employee> findByBranchBranchIdAndActive(Long branchId, boolean b);
+
 }
